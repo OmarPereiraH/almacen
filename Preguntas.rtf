@@ -1,0 +1,68 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2820
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww20000\viewh12760\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 1.- \'bf Describe el funcionamiento general de la sentencia JOIN?\
+\
+Una sentencia JOIN es aquella que tiene por objetivo generar una comparaci\'f3n de los datos de una tabla y los datos de\
+la otra tabla, con el objetivo de encontrar coincidencias para descartar datos. Los JOIN consisten en ejecutar un script para que \
+se tomen los datos de  una tabla y otra tabla, ese script manda llamar los datos y comienza a compararlos entre ellos,\
+posteriormente va descart\'e1ndomela informaci\'f3n, seg\'fan el tipo de join.\
+\
+2.- \'bf Cu\'e1les son los tipos de JOIN y cu\'e1l es el funcionamiento de los mismos?\
+\
+INNER JOIN: sirve para realizar una comparaci\'f3n entre los datos de una o m\'e1s tablas y si hay coincidencia\
+se hace la uni\'f3n de los dos registros. Si no hay coincidencias, no se enlistar\'e1n los registros.\
+\
+SELEC * FROM nombre_tabla INNER JOIN nombre_tabla_a_comparar ON condici\'f3n\
+\
+LEFT JOIN: en esta uni\'f3n hay una tabla izquierda y una derecha, para cada registro de la tabla izquierda, se lleva a cabo \
+Una comparaci\'f3n con cada uno de los registros de la tabla derecha, si no hay coincidencia crea una fila con los valores de\
+La tabla izquierda y los valores de la tabla derecha ser\'e1n asignados en null. Si hay coincidencias se genera una nueva fila\
+Con los valores de la tabla izquierda y los valores de la tabla derecha. \
+\
+SELECT * FROM nombre_tabla_a FROM nombre_tabla_a LEFT JOIN nombre_tabla_b ON condici\'f3n\
+\
+RIGHT JOIN: es el mismo procedimiento que en la left join, pero en esta uni\'f3n se enlistan los datos de la tabla derecha, si\
+Hay coincidencias se muestran los datos de la tabla derecha y si hay coincidencias se enlistan los datos de la tabla\
+Izquierda, si no se cumple la condici\'f3n se muestran valores nulos.\
+\
+SELECT * FROM nombre_tabla_a RIGHT JOIN nombre_tabla_b ON condici\'f3n\
+\
+3.- \'bf Cu\'e1l es el funcionamiento general de los TRIGGER y qu\'e9 prop\'f3sito tienen?\
+Un TRIGGER funciona con la sentencia CREATE TRIGGER nombre_disparador BEFORE | AFTER INSERT | SELECT\
+UPDATE | DELETE ON nombre_tabla\
+Los disparadores tienen como proposito ejecutar una determinada operaci\'f3n antes o despu\'e9s de un CRUD. \
+\
+\
+\
+GENERA LAS CONSULTAS DE LAS TABLAS SE\'d1ALADAS EN EL DOCUMENTO\
+\
+A) Trae todos los productos con una venta\
+\
+SELECT  productos.nombre, ventas.cantidad FROM productos INNER JOIN ventas ON  productos.idProducto = ventas.idProducto\
+\
+B) TRAE TODOS LOS PRODUCTOS QUE TENGAN VENTAS Y LA CANTIDAD TOTAL DE PRODUCTOS VENDIDOS\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 SELECT  productos.nombre, ventas.cantidad FROM productos INNER JOIN ventas ON  productos.idProducto = ventas.idProducto SUM (cantidad)\
+\
+C) Trae todos los productos (independientemente si tienen ventas o no) y la suma ($) vendida por producto\
+\
+SELECT productos.nombre SUM (ventas.cantidad * productos.precio) AS total_ventas FROM productos LEFT JOIN ventas ON  productos.idProducto = ventas.idProducto\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
